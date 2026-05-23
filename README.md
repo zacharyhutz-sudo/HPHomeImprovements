@@ -1,13 +1,6 @@
-# HP Home Improvements Astro Site
+# HP Home Improvements Static Recreation
 
-A small Astro/Tailwind site ready to deploy on Netlify.
-
-## Local setup
-
-```sh
-npm install
-npm run dev
-```
+This is a near-identical static Astro recreation of the public HP Home Improvements Wix site for GitHub/Netlify deployment.
 
 ## Netlify settings
 
@@ -15,16 +8,16 @@ npm run dev
 - Publish directory: `dist`
 - Node version: `22`
 
-## Pages
+## Pages included
 
-- `/` Home
-- `/projects/` Projects
-- `/services/` Services
-- `/vendors/` Vendors
+- Home
+- Projects
+- Services
+- Vendors
 
-## Dad-site customization checklist
+## Notes
 
-1. Replace the company name throughout the files.
-2. Update phone, email, address, and social links in `src/layouts/BaseLayout.astro`.
-3. Update service/project copy in `src/pages/*.astro`.
-4. Add real project images to `public/` and replace the placeholder visual blocks.
+- Form/login/social links are placeholder anchors for now.
+- Public Wix-hosted image URLs are referenced in `src/data/siteData.js`.
+- Vendor logos are recreated as local styled text cards rather than bundled trademark image files.
+- The Wix backend, CMS, login behavior, and original editor project cannot be exported from the public site.

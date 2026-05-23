@@ -1,86 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const highlights = [
-  'Whole-project remodeling support',
-  'Licensed, bonded, and insured in Georgia',
-  'Clear communication from estimate to completion',
-];
-
-const gallery = [
-  'Kitchen remodels',
-  'Bathroom renovations',
-  'Exterior improvements',
-  'Decks and carpentry',
-  'Flooring projects',
-  'Painting and finishes',
-];
+import { contact, homeImages } from '../data/siteData.js';
 ---
-
-<BaseLayout active="home" title="General Contractor | HP Home Improvements">
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">General contractor serving Georgia</p>
-      <h1>HP Home Improvements</h1>
-      <p class="hero-subtitle">A contractor for the whole project.</p>
-      <p class="hero-text">
-        From kitchens and bathrooms to concrete, carpentry, flooring, painting, and exterior work,
-        HP Home Improvements helps homeowners move from idea to finished project with confidence.
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="tel:14049313686">Call 404-931-3686</a>
-        <a class="button secondary" href="/projects/">View Projects</a>
-      </div>
-    </div>
-    <div class="hero-card" aria-label="Construction project photo collage">
-      <div class="photo-tile tall">Kitchens</div>
-      <div class="photo-tile">Baths</div>
-      <div class="photo-tile">Exteriors</div>
-    </div>
+<BaseLayout title="General Contractor | HP Home Improvements">
+  <section class="hero hero-home">
+    <div class="hero-logo" aria-hidden="true">HP</div>
+    <h1>HP Home Improvements</h1>
+    <p>A contractor for the whole&nbsp;project.</p>
   </section>
 
-  <section class="section split">
-    <div>
-      <p class="eyebrow">About us</p>
-      <h2>Built on trusted partnerships.</h2>
-    </div>
-    <p>
-      HP Home Improvements is a leader in providing value-added construction services by creating
-      a successful partnership throughout the construction process. We are a licensed, bonded, and
-      insured company working in the state of Georgia.
-    </p>
+  <section class="image-grid home-gallery" aria-label="Home gallery">
+    {homeImages.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
   </section>
 
-  <section class="section">
-    <div class="card-grid three">
-      {highlights.map((item) => (
-        <article class="info-card">
-          <span class="check">✓</span>
-          <h3>{item}</h3>
-        </article>
-      ))}
-    </div>
+  <section class="center-section about">
+    <h2>About Us</h2>
+    <p>HP Home Improvements is a leader in providing value-added construction services to our customers by creating a successful partnership throughout the construction process. We are a licensed, bonded and insured company working in the state of Georgia.</p>
   </section>
 
-  <section class="section">
-    <div class="section-heading">
-      <p class="eyebrow">Project gallery</p>
-      <h2>Spaces we help improve</h2>
-    </div>
-    <div class="gallery-grid">
-      {gallery.map((item) => <div class="gallery-item">{item}</div>)}
-    </div>
-  </section>
-
-  <section class="contact-band">
-    <div>
-      <p class="eyebrow">Contact us</p>
-      <h2>Text or call to book an estimate today.</h2>
-      <p>485 Buford Dr #214, Lawrenceville, GA 30046</p>
-    </div>
-    <div class="contact-actions">
-      <a class="button primary" href="tel:14049313686">Call now</a>
-      <a class="button secondary light" href="mailto:greg@hphomeimprovements.com">Email Greg</a>
+  <section class="contact-block">
+    <h2>Contact Us</h2>
+    <p class="subhead">Text or Call to book an estimate today!</p>
+    <address>
+      <span>{contact.address}</span>
+      <a href={`mailto:${contact.email}`}>{contact.email}</a>
+      <a href={`tel:${contact.phone.replaceAll('-', '')}`}>{contact.phone}</a>
+      <span>Fax: {contact.fax}</span>
+    </address>
+    <div class="contact-form fake-form" aria-label="Contact form placeholder">
+      <input placeholder="Name" />
+      <input placeholder="Email" />
+      <input placeholder="Phone" />
+      <textarea placeholder="Type your message here..."></textarea>
+      <a href="#contact-submit" class="button">Submit</a>
     </div>
   </section>
 </BaseLayout>

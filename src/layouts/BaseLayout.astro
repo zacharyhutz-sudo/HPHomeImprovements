@@ -1,63 +1,48 @@
 ---
 import '../styles/global.css';
-
-const {
-  title = 'HP Home Improvements',
-  description = 'A contractor for the whole project.',
-  active = 'home',
-} = Astro.props;
-
-const navItems = [
-  { href: '/', label: 'Home', key: 'home' },
-  { href: '/projects/', label: 'Projects', key: 'projects' },
-  { href: '/services/', label: 'Services', key: 'services' },
-  { href: '/vendors/', label: 'Vendors', key: 'vendors' },
+import { contact, links } from '../data/siteData.js';
+const { title = 'HP Home Improvements' } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/services/', label: 'Services' },
+  { href: '/vendors/', label: 'Vendors' },
 ];
 ---
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content="HP Home Improvements | A contractor for the whole project." />
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="HP Home Improvements home">
-        <span class="brand-mark">HP</span>
-        <span>
-          <strong>HP Home Improvements</strong>
-          <small>Licensed • Bonded • Insured</small>
-        </span>
-      </a>
-
-      <nav aria-label="Main navigation">
-        {navItems.map((item) => (
-          <a class:list={[active === item.key && 'active']} href={item.href}>{item.label}</a>
-        ))}
+      <div class="topline">
+        <a class="brand" href="/">HP Home Improvements</a>
+        <a class="phone" href={`tel:${contact.phone.replaceAll('-', '')}`}>{contact.phone}</a>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        {nav.map((item) => <a class:list={[{ active: path === item.href || (item.href !== '/' && path.startsWith(item.href)) }]} href={item.href}>{item.label}</a>)}
+        <button class="more" type="button" aria-label="More menu">More</button>
       </nav>
-
-      <a class="header-phone" href="tel:14049313686">404-931-3686</a>
+      <div class="utility-row">
+        <a href={links.instagram} aria-label="Instagram" class="social">◎</a>
+        <a href={links.facebook} aria-label="Facebook" class="social">f</a>
+        <a href={links.login} class="login">Log In</a>
+      </div>
     </header>
-
     <main>
       <slot />
     </main>
-
-    <footer class="site-footer">
-      <div>
-        <strong>HP Home Improvements</strong>
-        <p>A contractor for the whole project.</p>
+    <footer class="footer">
+      <a href={`tel:${contact.phone.replaceAll('-', '')}`} class="footer-phone">{contact.phone}</a>
+      <div class="footer-socials">
+        <a href={links.instagram}>Instagram</a>
+        <a href={links.facebook}>Facebook</a>
       </div>
-      <div class="footer-contact">
-        <a href="tel:14049313686">404-931-3686</a>
-        <a href="mailto:greg@hphomeimprovements.com">greg@hphomeimprovements.com</a>
-        <span>485 Buford Dr #214, Lawrenceville, GA 30046</span>
-      </div>
+      <p>©2020 by HP Home Improvements. Proudly created with Wix.com</p>
     </footer>
   </body>
 </html>

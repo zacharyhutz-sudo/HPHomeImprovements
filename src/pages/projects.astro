@@ -1,53 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const categories = [
-  { title: 'Kitchens', items: ['Cabinet updates', 'Countertop coordination', 'Open-concept remodels', 'Fixture upgrades'] },
-  { title: 'Bathrooms', items: ['Full renovations', 'Tile work', 'Vanities and fixtures', 'Layout improvements'] },
-  { title: 'Exterior', items: ['Decks', 'Siding repairs', 'Outdoor improvements', 'Curb appeal upgrades'] },
-];
+import { links, projectGalleries, projectsHero } from '../data/siteData.js';
 ---
-
-<BaseLayout active="projects" title="Projects | HP Home Improvements">
-  <section class="page-hero">
-    <p class="eyebrow">Projects</p>
-    <h1>Quality work that stands behind the reputation.</h1>
-    <p>
-      See the kinds of kitchen, bathroom, and exterior work HP Home Improvements can help plan and complete.
-    </p>
+<BaseLayout title="Projects | HP Home Improvements">
+  <section class="projects-hero">
+    <img src={projectsHero.src} alt={projectsHero.alt} />
   </section>
 
-  <section class="section testimonial">
-    <p class="eyebrow">What clients say</p>
-    <blockquote>
-      “We’ve used HP Home Improvements three times in the past six months, most recently to do a complete
-      renovation of our master bathroom. Each project has been completed timely and Greg and his crew were
-      easy and professional to work with.”
-    </blockquote>
-    <cite>Jessica R.</cite>
+  <section class="testimonial">
+    <h1>What Clients Say</h1>
+    <h3>Jessica R.</h3>
+    <p>We've used HP Home Improvements three times in the past six months, most recently to do a complete renovation of our master bathroom. Each project has been completed timely and Greg and his crew were easy and professional to work with. Greg stated many times that their quality is their reputation and he absolutely stands behind that. They really outdid themselves with our master bath and we couldn't be happier with how it turned out!</p>
+    <p>Greg was so flexible to work with. We made some changes to the original design and those were fast and painless. He offered great suggestions and his expertise was definitely appreciated. He was sensitive to our budget and offered creative, cost-effective solutions to maximize our money spent and the impact.</p>
+    <p>The tradesmen he sent were skilled, professional, and always showed up on time. They worked really hard and were pleasant to have around. They also took care of the other areas in my house, which was definitely appreciated since we had just put in new flooring.</p>
+    <p>We are beyond thrilled with how the bathroom turned out! It's honestly hard to believe it's even the same space! The bathroom is just gorgeous and we've received so many compliments on it. I look forward to using them on my next project!</p>
+    <div class="dots"><span>1.</span><span>2.</span><span>3.</span></div>
   </section>
 
-  <section class="section">
-    <div class="card-grid three">
-      {categories.map((category) => (
-        <article class="project-card">
-          <div class="project-image">{category.title}</div>
-          <div class="project-content">
-            <h2>{category.title}</h2>
-            <ul>
-              {category.items.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-        </article>
-      ))}
-    </div>
+  <section class="yelp-section">
+    <h2>Yelp Reviews</h2>
+    <p>Click to hear from our satisfied customers</p>
+    <a class="button" href={links.yelp}>Reviews</a>
   </section>
 
-  <section class="contact-band muted">
-    <div>
-      <p class="eyebrow">Ready for an estimate?</p>
-      <h2>Let’s talk through the project.</h2>
-    </div>
-    <a class="button primary" href="tel:14049313686">Call 404-931-3686</a>
+  {projectGalleries.map((gallery) => (
+    <section class="portfolio-section">
+      <h2>{gallery.title}</h2>
+      <div class="portfolio-grid">
+        {gallery.images.map((src) => <img src={src} alt={`${gallery.title} project`} loading="lazy" />)}
+      </div>
+    </section>
+  ))}
+
+  <section class="rate-section fake-form">
+    <h2>Add a Testimonial</h2>
+    <label>How Did We Do?<textarea></textarea></label>
+    <p>Would you recommend us to your friends?</p>
+    <label><input type="radio" name="recommend" /> Yes</label>
+    <label><input type="radio" name="recommend" /> No</label>
+    <a href="#testimonial-submit" class="button">Submit</a>
+    <p class="thanks">Thanks for submitting!</p>
   </section>
 </BaseLayout>

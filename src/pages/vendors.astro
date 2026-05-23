@@ -1,31 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const vendors = [
-  { name: 'Wheeler Woodworks', url: '#' },
-  { name: 'Lowes', url: 'https://www.lowes.com' },
-  { name: 'Home Depot', url: 'https://www.homedepot.com' },
-  { name: 'Sherwin Williams', url: 'https://www.sherwin-williams.com' },
-  { name: 'Floor & Decor', url: 'https://www.flooranddecor.com' },
-];
+import { vendors } from '../data/siteData.js';
 ---
-
-<BaseLayout active="vendors" title="Vendors | HP Home Improvements">
-  <section class="page-hero compact">
-    <p class="eyebrow">Vendor list</p>
-    <h1>Companies we love to partner with.</h1>
-    <p>A simple directory for trusted suppliers and project partners.</p>
+<BaseLayout title="Vendors | HP Home Improvements">
+  <section class="vendor-intro">
+    <h1>Vendor List</h1>
+    <p>Companies We Love to Partner With</p>
   </section>
-
-  <section class="section">
-    <div class="vendor-grid">
-      {vendors.map((vendor) => (
-        <article class="vendor-card">
-          <div class="vendor-logo">{vendor.name.slice(0, 2)}</div>
-          <h2>{vendor.name}</h2>
-          <a href={vendor.url}>Website</a>
-        </article>
-      ))}
-    </div>
+  <section class="vendor-list">
+    {vendors.map((vendor) => (
+      <article class="vendor-card">
+        <a href={vendor.url} class:list={["vendor-mark", vendor.type]}>
+          {vendor.mark.split('\n').map((line) => <span>{line}</span>)}
+        </a>
+        <h2>{vendor.name}</h2>
+        <a href={vendor.url}>Website</a>
+      </article>
+    ))}
   </section>
 </BaseLayout>

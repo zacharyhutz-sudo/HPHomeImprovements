@@ -1,23 +1,40 @@
-# HP Home Improvements Static Recreation
+# HP Home Improvements Modern Static Site
 
-This is a near-identical static Astro recreation of the public HP Home Improvements Wix site for GitHub/Netlify deployment.
+This is a modernized Astro/Netlify rebuild of the HP Home Improvements site.
+
+## What changed in this version
+
+- Modern full-screen hero treatment
+- Updated typography and spacing inspired by the provided Nick Sammons site
+- Refined HP blue, black, white, and warm-neutral design system
+- Uploaded HP logo added locally at `public/assets/hp-logo.png`
+- New favicon and Apple touch icon generated from the logo
+- Modernized Home, Projects, Services, and Vendors pages
+- Placeholder/fake links for login, social links, estimate forms, and testimonial forms
+- Conversion-focused CTAs for calling and booking an estimate
+- Responsive layouts for desktop, tablet, and mobile
 
 ## Netlify settings
 
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Node version: `22`
+```txt
+Build command: npm run build
+Publish directory: dist
+Node version: 22
+```
 
-## Pages included
+## Development
 
-- Home
-- Projects
-- Services
-- Vendors
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+```
 
 ## Notes
 
-- Form/login/social links are placeholder anchors for now.
-- Public Wix-hosted image URLs are referenced in `src/data/siteData.js`.
-- Vendor logos are recreated as local styled text cards rather than bundled trademark image files.
-- The Wix backend, CMS, login behavior, and original editor project cannot be exported from the public site.
+The site references publicly served Wix project/service images by URL. The uploaded HP logo is stored locally. Form submissions are visual placeholders only and can be wired to Netlify Forms later.

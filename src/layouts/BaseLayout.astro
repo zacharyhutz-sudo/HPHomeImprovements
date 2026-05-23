@@ -1,48 +1,99 @@
 ---
 import '../styles/global.css';
-import { contact, links } from '../data/siteData.js';
-const { title = 'HP Home Improvements' } = Astro.props;
+import { brand, contact, links } from '../data/siteData.js';
+const {
+  title = 'HP Home Improvements',
+  description = 'HP Home Improvements is a licensed, bonded, and insured Georgia contractor for the whole project.',
+} = Astro.props;
 const path = Astro.url.pathname;
 const nav = [
   { href: '/', label: 'Home' },
   { href: '/projects/', label: 'Projects' },
   { href: '/services/', label: 'Services' },
   { href: '/vendors/', label: 'Vendors' },
+  { href: '/#contact', label: 'Contact' },
 ];
+const cleanPhone = contact.phone.replaceAll('-', '');
 ---
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="description" content="HP Home Improvements | A contractor for the whole project." />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#060912" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={brand.logo} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="topline">
-        <a class="brand" href="/">HP Home Improvements</a>
-        <a class="phone" href={`tel:${contact.phone.replaceAll('-', '')}`}>{contact.phone}</a>
-      </div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/" aria-label="HP Home Improvements home">
+        <span class="brand-logo-wrap"><img src={brand.logo} alt="HP Home Improvements logo" /></span>
+        <span class="brand-text">
+          <strong>HP Home Improvements</strong>
+          <em>{brand.tagline}</em>
+        </span>
+      </a>
+
       <nav class="nav" aria-label="Main navigation">
-        {nav.map((item) => <a class:list={[{ active: path === item.href || (item.href !== '/' && path.startsWith(item.href)) }]} href={item.href}>{item.label}</a>)}
-        <button class="more" type="button" aria-label="More menu">More</button>
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[{ active: path === item.href || (item.href !== '/' && item.href !== '/#contact' && path.startsWith(item.href)) }]}
+          >
+            {item.label}
+          </a>
+        ))}
       </nav>
-      <div class="utility-row">
-        <a href={links.instagram} aria-label="Instagram" class="social">◎</a>
-        <a href={links.facebook} aria-label="Facebook" class="social">f</a>
-        <a href={links.login} class="login">Log In</a>
+
+      <div class="header-actions">
+        <a class="ghost-link" href={links.login}>Log In</a>
+        <a class="phone-pill" href={`tel:${cleanPhone}`}>{contact.phone}</a>
       </div>
     </header>
-    <main>
+
+    <main id="main-content">
       <slot />
     </main>
+
     <footer class="footer">
-      <a href={`tel:${contact.phone.replaceAll('-', '')}`} class="footer-phone">{contact.phone}</a>
-      <div class="footer-socials">
-        <a href={links.instagram}>Instagram</a>
-        <a href={links.facebook}>Facebook</a>
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand" href="/">
+            <img src={brand.logo} alt="HP Home Improvements logo" />
+          </a>
+          <p>{brand.tagline}</p>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <a href={`tel:${cleanPhone}`}>{contact.phone}</a>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <span>{contact.address}</span>
+          <span>Fax: {contact.fax}</span>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <a href="/projects/">Projects</a>
+          <a href="/services/">Services</a>
+          <a href="/vendors/">Vendors</a>
+          <a href={links.instagram}>Instagram</a>
+          <a href={links.facebook}>Facebook</a>
+        </div>
       </div>
-      <p>©2020 by HP Home Improvements. Proudly created with Wix.com</p>
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} HP Home Improvements. All rights reserved.</span>
+        <span>Licensed, bonded, and insured in Georgia.</span>
+      </div>
     </footer>
   </body>
 </html>

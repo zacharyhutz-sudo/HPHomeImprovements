@@ -1,21 +1,60 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { vendors } from '../data/siteData.js';
+import { homeImages, vendors } from '../data/siteData.js';
 ---
-<BaseLayout title="Vendors | HP Home Improvements">
-  <section class="vendor-intro">
-    <h1>Vendor List</h1>
-    <p>Companies We Love to Partner With</p>
+<BaseLayout
+  title="Vendors | HP Home Improvements"
+  description="HP Home Improvements works with trusted vendor relationships for materials, finishes, paint, flooring, and project supplies."
+>
+  <section class="page-hero vendors-page-hero">
+    <img src={homeImages[4].src} alt={homeImages[4].alt} class="hero-bg" loading="eager" />
+    <div class="hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="eyebrow">Vendors</p>
+      <h1>Trusted materials and vendor relationships.</h1>
+      <p>Great projects rely on the right materials, finishes, and supplier coordination.</p>
+    </div>
   </section>
-  <section class="vendor-list">
+
+  <section class="vendor-modern-list">
     {vendors.map((vendor) => (
-      <article class="vendor-card">
-        <a href={vendor.url} class:list={["vendor-mark", vendor.type]}>
+      <article class="vendor-modern-card">
+        <a href={vendor.url} class="vendor-mark-modern" aria-label={`${vendor.name} website`}>
           {vendor.mark.split('\n').map((line) => <span>{line}</span>)}
         </a>
-        <h2>{vendor.name}</h2>
-        <a href={vendor.url}>Website</a>
+        <div>
+          <p class="eyebrow blue">Vendor</p>
+          <h2>{vendor.name}</h2>
+          <p>{vendor.specialty}</p>
+        </div>
+        <a href={vendor.url} class="text-link">Website</a>
       </article>
     ))}
+  </section>
+
+  <section class="materials-section">
+    <div class="section-heading centered">
+      <p class="eyebrow blue">Materials</p>
+      <h2>What we commonly source.</h2>
+      <p>Every project is different, but clear material decisions help the whole job move forward.</p>
+    </div>
+    <div class="material-grid">
+      <span>Lumber</span>
+      <span>Flooring</span>
+      <span>Paint</span>
+      <span>Cabinets</span>
+      <span>Fixtures</span>
+      <span>Hardware</span>
+      <span>Tile</span>
+      <span>Stone</span>
+    </div>
+  </section>
+
+  <section class="cta-split dark-cta">
+    <div>
+      <p class="eyebrow">Vendor Coordination</p>
+      <h2>Materials should support the project, not slow it down.</h2>
+    </div>
+    <a class="button button-light" href="/#contact">Start a Project</a>
   </section>
 </BaseLayout>

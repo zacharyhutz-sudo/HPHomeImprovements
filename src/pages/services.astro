@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  { title: 'Concrete', text: 'Foundations and walls to sidewalks and driveways.' },
+  { title: 'Carpentry', text: 'Framing expertise for decks, windows, doors, and more.' },
+  { title: 'Kitchens', text: 'Collaborate with us in building a focal point for your home.' },
+  { title: 'Floors', text: 'Tile, carpet, hardwood, and durable flooring solutions.' },
+  { title: 'Plumbing and Electrical', text: 'Utility experts ready to help keep your project moving.' },
+  { title: 'Landscaping', text: 'Solutions to help your entire property stand out.' },
+  { title: 'Painting', text: 'Guidance for whole-house projects, single rooms, and final finishes.' },
+];
+---
+
+<BaseLayout active="services" title="Services | HP Home Improvements">
+  <section class="page-hero compact">
+    <p class="eyebrow">Services</p>
+    <h1>One team for the whole project.</h1>
+    <p>Practical construction help for remodels, repairs, additions, and home improvement projects.</p>
+  </section>
+
+  <section class="section">
+    <div class="service-list">
+      {services.map((service, index) => (
+        <article class="service-card">
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h2>{service.title}</h2>
+            <p>{service.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

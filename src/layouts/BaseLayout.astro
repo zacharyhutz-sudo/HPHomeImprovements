@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'HP Home Improvements',
+  description = 'A contractor for the whole project.',
+  active = 'home',
+} = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/projects/', label: 'Projects', key: 'projects' },
+  { href: '/services/', label: 'Services', key: 'services' },
+  { href: '/vendors/', label: 'Vendors', key: 'vendors' },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="HP Home Improvements home">
+        <span class="brand-mark">HP</span>
+        <span>
+          <strong>HP Home Improvements</strong>
+          <small>Licensed • Bonded • Insured</small>
+        </span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        {navItems.map((item) => (
+          <a class:list={[active === item.key && 'active']} href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+
+      <a class="header-phone" href="tel:14049313686">404-931-3686</a>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>HP Home Improvements</strong>
+        <p>A contractor for the whole project.</p>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:14049313686">404-931-3686</a>
+        <a href="mailto:greg@hphomeimprovements.com">greg@hphomeimprovements.com</a>
+        <span>485 Buford Dr #214, Lawrenceville, GA 30046</span>
+      </div>
+    </footer>
+  </body>
+</html>

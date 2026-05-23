@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const categories = [
+  { title: 'Kitchens', items: ['Cabinet updates', 'Countertop coordination', 'Open-concept remodels', 'Fixture upgrades'] },
+  { title: 'Bathrooms', items: ['Full renovations', 'Tile work', 'Vanities and fixtures', 'Layout improvements'] },
+  { title: 'Exterior', items: ['Decks', 'Siding repairs', 'Outdoor improvements', 'Curb appeal upgrades'] },
+];
+---
+
+<BaseLayout active="projects" title="Projects | HP Home Improvements">
+  <section class="page-hero">
+    <p class="eyebrow">Projects</p>
+    <h1>Quality work that stands behind the reputation.</h1>
+    <p>
+      See the kinds of kitchen, bathroom, and exterior work HP Home Improvements can help plan and complete.
+    </p>
+  </section>
+
+  <section class="section testimonial">
+    <p class="eyebrow">What clients say</p>
+    <blockquote>
+      “We’ve used HP Home Improvements three times in the past six months, most recently to do a complete
+      renovation of our master bathroom. Each project has been completed timely and Greg and his crew were
+      easy and professional to work with.”
+    </blockquote>
+    <cite>Jessica R.</cite>
+  </section>
+
+  <section class="section">
+    <div class="card-grid three">
+      {categories.map((category) => (
+        <article class="project-card">
+          <div class="project-image">{category.title}</div>
+          <div class="project-content">
+            <h2>{category.title}</h2>
+            <ul>
+              {category.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="contact-band muted">
+    <div>
+      <p class="eyebrow">Ready for an estimate?</p>
+      <h2>Let’s talk through the project.</h2>
+    </div>
+    <a class="button primary" href="tel:14049313686">Call 404-931-3686</a>
+  </section>
+</BaseLayout>

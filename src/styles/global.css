@@ -14,7 +14,7 @@
   --shadow: 0 20px 56px rgba(0, 0, 0, 0.14);
   --soft-shadow: 0 14px 42px rgba(12, 15, 22, 0.08);
   --max: 1180px;
-  --serif: 'Libre Baskerville', Georgia, serif;
+  --serif: 'Source Serif 4', Georgia, serif;
   --sans: 'Inter', Arial, sans-serif;
 }
 
@@ -175,7 +175,7 @@ button, input, textarea { font: inherit; }
 
 h1, h2, h3, h4 {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.04;
   margin: 0;
   letter-spacing: -.025em;
@@ -226,7 +226,8 @@ p { margin: 0; }
   max-width: 760px;
   font-size: clamp(44px, 6.8vw, 92px);
   line-height: 1.02;
-  letter-spacing: -.035em;
+  letter-spacing: -.03em;
+  font-weight: 500;
   text-wrap: balance;
 }
 .page-hero h1 { font-size: clamp(42px, 5.8vw, 78px); max-width: 920px; }
@@ -324,7 +325,7 @@ p { margin: 0; }
   border-right: 1px solid var(--line);
 }
 .trust-strip div:last-child { border-right: 0; }
-.trust-strip strong { display: block; font-family: var(--serif); font-size: 30px; line-height: 1; }
+.trust-strip strong { display: block; font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1; letter-spacing: -.015em; }
 .trust-strip span { display: block; margin-top: 8px; color: var(--stone); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 
 .split-section,
@@ -537,8 +538,8 @@ p { margin: 0; }
   margin: 0 auto 24px;
   font-family: var(--serif);
   font-size: clamp(40px, 6vw, 82px);
-  font-weight: 700;
-  line-height: .98;
+  font-weight: 500;
+  line-height: 1.02;
   letter-spacing: -.025em;
   text-wrap: balance;
 }
@@ -558,7 +559,7 @@ address { font-style: normal; }
   color: var(--stone-dark);
   font-size: 15px;
 }
-.contact-copy address a:first-child { font-size: 30px; font-family: var(--serif); font-weight: 700; color: var(--ink); }
+.contact-copy address a:first-child { font-size: 30px; font-family: var(--serif); font-weight: 500; color: var(--ink); }
 .contact-form {
   display: grid;
   gap: 16px;
@@ -616,7 +617,7 @@ address { font-style: normal; }
   background: white;
 }
 .service-detail h2 { font-size: clamp(42px, 5vw, 70px); }
-.service-detail .lead { color: var(--ink); font-size: 20px; font-family: var(--serif); line-height: 1.25; }
+.service-detail .lead { color: var(--ink); font-size: 20px; font-family: var(--serif); font-weight: 400; line-height: 1.35; }
 .service-detail .text-link { margin-top: 28px; width: max-content; }
 .process-dark { margin-top: 60px; }
 
@@ -662,7 +663,7 @@ address { font-style: normal; }
   background: #111111;
   color: white;
 }
-.testimonial-aside span { color: rgba(255,255,255,.86); font-size: 48px; font-family: var(--serif); font-weight: 700; line-height: 1; }
+.testimonial-aside span { color: rgba(255,255,255,.86); font-size: 48px; font-family: var(--serif); font-weight: 500; line-height: 1; }
 .testimonial-aside p { margin: 20px 0 28px; color: rgba(255,255,255,.72); }
 .testimonial-aside .text-link { color: white; }
 .project-gallery-section + .project-gallery-section { padding-top: 20px; }

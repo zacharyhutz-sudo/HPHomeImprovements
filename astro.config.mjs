@@ -1,19 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
 
-const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? '';
+const repository = process.env.GITHUB_REPOSITORY ?? '';
+const [owner = '', repo = ''] = repository.split('/');
 const isProjectPagesSite = Boolean(
-  process.env.GITHUB_ACTIONS &&
-  repositoryName &&
-  !repositoryName.endsWith('.github.io')
+  process.env.GITHUB_ACTIONS && repo && !repo.endsWith('.github.io')
 );
 
-const base = process.env.ASTRO_BASE || (isProjectPagesSite ? `/${repositoryName}` : '/');
+const site = process.env.ASTRO_SITE || (owner ? `https://${owner}.github.io` : undefined);
+const base = process.env.ASTRO_BASE || (isProjectPagesSite ? `/${repo}` : '/');
 
-// https://astro.build/config
 export default defineConfig({
+  site,
   base,
   vite: {
     plugins: [tailwindcss()]

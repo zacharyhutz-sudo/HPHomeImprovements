@@ -5,7 +5,7 @@ Astro static site for HP Home Improvements.
 ## Local development
 
 ```bash
-npm ci
+npm install
 npm run dev
 ```
 
@@ -15,31 +15,32 @@ npm run dev
 npm run build
 ```
 
-The production build is created in `dist/`.
+## GitHub Pages deployment
 
-## Deploying on GitHub Pages
+This repo is configured to deploy with GitHub Actions.
 
-This repo includes `.github/workflows/deploy.yml`, which builds the Astro site and deploys `dist/` to GitHub Pages whenever changes are pushed to `main`.
+1. Push the project files to the root of the GitHub repository.
+2. Confirm this file exists in GitHub: `.github/workflows/deploy.yml`.
+3. In GitHub, go to **Settings → Pages**.
+4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+5. Push to the `main` branch, or run the workflow manually from the **Actions** tab.
 
-After uploading these files to GitHub:
+The workflow builds Astro and deploys the generated `dist` folder to GitHub Pages.
 
-1. Go to the repository's **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-3. Push to the `main` branch.
-4. Open the workflow run under the **Actions** tab to confirm the deployment completed.
+### Branch name
 
-### Default URL behavior
+The workflow currently deploys on pushes to `main`. If your repository uses `master`, edit `.github/workflows/deploy.yml` and change:
 
-For a normal project repo, GitHub Pages serves the site at a path like:
-
-```text
-https://your-username.github.io/HPHomeImprovements/
+```yaml
+branches: [main]
 ```
 
-The Astro config automatically uses the repository name as the base path during GitHub Actions builds, so internal links and local assets work at that URL.
+to:
 
-### Custom domain
+```yaml
+branches: [master]
+```
 
-If you connect a custom domain directly to this GitHub Pages site, set a repository variable named `ASTRO_BASE` to `/` before deploying. That tells Astro to build links for the root of the domain instead of `/repo-name/`.
+### Custom domains
 
-To set it: **Settings → Secrets and variables → Actions → Variables → New repository variable**.
+For a custom domain, add a repository variable named `ASTRO_SITE` with your full domain, for example `https://www.hphomeimprovements.com`, and set `ASTRO_BASE` to `/`.

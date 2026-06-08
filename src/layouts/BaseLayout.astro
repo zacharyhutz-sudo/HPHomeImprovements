@@ -1,22 +1,20 @@
 ---
+import { withBase } from '../utils/paths.js';
 import '../styles/global.css';
 import { brand, contact, links } from '../data/siteData.js';
-import { withBase } from '../utils/paths.js';
 const {
   title = 'HP Home Improvements',
   description = 'HP Home Improvements is a licensed, bonded, and insured Georgia contractor for the whole project.',
 } = Astro.props;
 const path = Astro.url.pathname;
 const nav = [
-  { href: withBase('/'), label: 'Home' },
-  { href: withBase('/projects/'), label: 'Projects' },
-  { href: withBase('/services/'), label: 'Services' },
-  { href: withBase('/vendors/'), label: 'Vendors' },
-  { href: withBase('/#contact'), label: 'Contact' },
+  { href: '/', label: 'Home' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/services/', label: 'Services' },
+  { href: '/vendors/', label: 'Vendors' },
+  { href: '/#contact', label: 'Contact' },
 ];
 const cleanPhone = contact.phone.replaceAll('-', '');
-const logoSrc = withBase(brand.logo);
-const isActive = (href) => path === href || (href !== withBase('/') && href !== withBase('/#contact') && path.startsWith(href));
 ---
 <!doctype html>
 <html lang="en">
@@ -29,7 +27,7 @@ const isActive = (href) => path === href || (href !== withBase('/') && href !== 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={logoSrc} />
+    <meta property="og:image" content={withBase(brand.logo)} />
     <link rel="icon" href={withBase("/favicon.ico")} sizes="any" />
     <link rel="icon" type="image/png" href={withBase("/favicon-32.png")} />
     <link rel="apple-touch-icon" href={withBase("/apple-touch-icon.png")} />
@@ -41,7 +39,7 @@ const isActive = (href) => path === href || (href !== withBase('/') && href !== 
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header" id="site-header">
       <a class="brand" href={withBase("/")} aria-label="HP Home Improvements home">
-        <span class="brand-logo-wrap"><img src={logoSrc} alt="HP Home Improvements logo" /></span>
+        <span class="brand-logo-wrap"><img src={withBase(brand.logo)} alt="HP Home Improvements logo" /></span>
         <span class="brand-text">
           <strong>HP Home Improvements</strong>
           <em>{brand.tagline}</em>
@@ -51,8 +49,8 @@ const isActive = (href) => path === href || (href !== withBase('/') && href !== 
       <nav class="nav" aria-label="Main navigation">
         {nav.map((item) => (
           <a
-            href={item.href}
-            class:list={[{ active: isActive(item.href) }]}
+            href={withBase(item.href)}
+            class:list={[{ active: path === item.href || (item.href !== '/' && item.href !== '/#contact' && path.startsWith(item.href)) }]}
           >
             {item.label}
           </a>
@@ -73,7 +71,7 @@ const isActive = (href) => path === href || (href !== withBase('/') && href !== 
       <div class="footer-grid">
         <div>
           <a class="footer-brand" href={withBase("/")}>
-            <img src={logoSrc} alt="HP Home Improvements logo" />
+            <img src={withBase(brand.logo)} alt="HP Home Improvements logo" />
           </a>
           <p>{brand.tagline}</p>
         </div>

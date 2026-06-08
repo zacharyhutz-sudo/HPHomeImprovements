@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../utils/paths.js';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { links, projectGalleries, projectsHero } from '../data/siteData.js';
 ---
 <BaseLayout
@@ -56,7 +56,7 @@ import { links, projectGalleries, projectsHero } from '../data/siteData.js';
     <div>
       <p class="eyebrow blue">Add a Testimonial</p>
       <h2>How did we do?</h2>
-      <p>This is a placeholder form for now. Backend form handling can be added later.</p>
+      <p>This is a placeholder form for now. It can be wired to Netlify Forms later.</p>
     </div>
     <form class="contact-form compact" action="#testimonial-submit">
       <label>Your Review<textarea name="review" placeholder="Share your experience..."></textarea></label>

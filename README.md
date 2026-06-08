@@ -1,40 +1,45 @@
-# HP Home Improvements Modern Static Site
+# HP Home Improvements
 
-This is a modernized Astro/Netlify rebuild of the HP Home Improvements site.
+Astro static site for HP Home Improvements.
 
-## What changed in this version
-
-- Modern full-screen hero treatment
-- Updated typography and spacing inspired by the provided Nick Sammons site
-- Refined HP blue, black, white, and warm-neutral design system
-- Uploaded HP logo added locally at `public/assets/hp-logo.png`
-- New favicon and Apple touch icon generated from the logo
-- Modernized Home, Projects, Services, and Vendors pages
-- Placeholder/fake links for login, social links, estimate forms, and testimonial forms
-- Conversion-focused CTAs for calling and booking an estimate
-- Responsive layouts for desktop, tablet, and mobile
-
-## Netlify settings
-
-```txt
-Build command: npm run build
-Publish directory: dist
-Node version: 22
-```
-
-## Development
+## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Production build
+## Build
 
 ```bash
 npm run build
 ```
 
-## Notes
+The production build is created in `dist/`.
 
-The site references publicly served Wix project/service images by URL. The uploaded HP logo is stored locally. Form submissions are visual placeholders only and can be wired to Netlify Forms later.
+## Deploying on GitHub Pages
+
+This repo includes `.github/workflows/deploy.yml`, which builds the Astro site and deploys `dist/` to GitHub Pages whenever changes are pushed to `main`.
+
+After uploading these files to GitHub:
+
+1. Go to the repository's **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Push to the `main` branch.
+4. Open the workflow run under the **Actions** tab to confirm the deployment completed.
+
+### Default URL behavior
+
+For a normal project repo, GitHub Pages serves the site at a path like:
+
+```text
+https://your-username.github.io/HPHomeImprovements/
+```
+
+The Astro config automatically uses the repository name as the base path during GitHub Actions builds, so internal links and local assets work at that URL.
+
+### Custom domain
+
+If you connect a custom domain directly to this GitHub Pages site, set a repository variable named `ASTRO_BASE` to `/` before deploying. That tells Astro to build links for the root of the domain instead of `/repo-name/`.
+
+To set it: **Settings → Secrets and variables → Actions → Variables → New repository variable**.

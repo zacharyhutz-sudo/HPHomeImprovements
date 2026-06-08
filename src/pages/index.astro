@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths.js';
 import { brand, contact, homeImages, projectGalleries, processSteps, services } from '../data/siteData.js';
 const cleanPhone = contact.phone.replaceAll('-', '');
 const featuredProjects = [
@@ -22,11 +23,11 @@ const featuredServices = services.slice(0, 6);
       <p class="hero-copy">Home improvements, remodels, carpentry, and project coordination across Georgia.</p>
       <div class="hero-buttons">
         <a class="button button-primary" href="#contact">Book an Estimate</a>
-        <a class="button button-secondary" href="/projects/">View Projects</a>
+        <a class="button button-secondary" href={withBase("/projects/")}>View Projects</a>
       </div>
     </div>
     <div class="hero-card">
-      <img src={brand.logo} alt="HP Home Improvements logo" />
+      <img src={withBase(brand.logo)} alt="HP Home Improvements logo" />
       <span>Georgia-based construction services with one clear point of contact from start to finish.</span>
     </div>
   </section>
@@ -56,7 +57,7 @@ const featuredServices = services.slice(0, 6);
           <p>From framing to finishes, the details are handled with pride and practical experience.</p>
         </div>
       </div>
-      <a class="text-link" href="/services/">See what we do</a>
+      <a class="text-link" href={withBase("/services/")}>See what we do</a>
     </div>
   </section>
 
@@ -68,7 +69,7 @@ const featuredServices = services.slice(0, 6);
     </div>
     <div class="card-grid service-grid-preview">
       {featuredServices.map((service) => (
-        <a class="service-tile" href="/services/">
+        <a class="service-tile" href={withBase("/services/")}>
           <img src={service.src} alt={`${service.title} service`} loading="lazy" />
           <div>
             <span>Service</span>
@@ -102,11 +103,11 @@ const featuredServices = services.slice(0, 6);
         <p class="eyebrow blue">Recent Work</p>
         <h2>Selected project details.</h2>
       </div>
-      <a class="text-link" href="/projects/">View all projects</a>
+      <a class="text-link" href={withBase("/projects/")}>View all projects</a>
     </div>
     <div class="modern-gallery">
       {featuredProjects.map((src, index) => (
-        <a class:list={["gallery-item", { large: index === 0 || index === 3 }]} href="/projects/">
+        <a class:list={["gallery-item", { large: index === 0 || index === 3 }]} href={withBase("/projects/")}>
           <img src={src} alt="HP Home Improvements project" loading="lazy" />
         </a>
       ))}

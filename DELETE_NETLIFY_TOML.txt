@@ -1,0 +1,1 @@
+Delete netlify.toml from the repo. It is no longer needed for GitHub Pages deployment.

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths.js';
 import { links, projectGalleries, projectsHero } from '../data/siteData.js';
 ---
 <BaseLayout
@@ -39,7 +40,7 @@ import { links, projectGalleries, projectsHero } from '../data/siteData.js';
           <h2>{gallery.title}</h2>
           <p>{gallery.kicker}</p>
         </div>
-        <a class="text-link" href="/#contact">Plan a similar project</a>
+        <a class="text-link" href={withBase("/#contact")}>Plan a similar project</a>
       </div>
       <div class="modern-gallery project-gallery-grid">
         {gallery.images.map((src, index) => (
@@ -55,7 +56,7 @@ import { links, projectGalleries, projectsHero } from '../data/siteData.js';
     <div>
       <p class="eyebrow blue">Add a Testimonial</p>
       <h2>How did we do?</h2>
-      <p>This is a placeholder form for now. It can be wired to Netlify Forms later.</p>
+      <p>This is a placeholder form for now. Backend form handling can be added later.</p>
     </div>
     <form class="contact-form compact" action="#testimonial-submit">
       <label>Your Review<textarea name="review" placeholder="Share your experience..."></textarea></label>

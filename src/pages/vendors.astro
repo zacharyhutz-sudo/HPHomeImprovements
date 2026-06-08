@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths.js';
 import { homeImages, vendors } from '../data/siteData.js';
 ---
 <BaseLayout
@@ -55,6 +56,6 @@ import { homeImages, vendors } from '../data/siteData.js';
       <p class="eyebrow">Vendor Coordination</p>
       <h2>Materials should support the project, not slow it down.</h2>
     </div>
-    <a class="button button-light" href="/#contact">Start a Project</a>
+    <a class="button button-light" href={withBase("/#contact")}>Start a Project</a>
   </section>
 </BaseLayout>

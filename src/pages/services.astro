@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths.js';
 import { contact, homeImages, processSteps, services } from '../data/siteData.js';
 const cleanPhone = contact.phone.replaceAll('-', '');
 ---
@@ -28,7 +29,7 @@ const cleanPhone = contact.phone.replaceAll('-', '');
           <h2>{service.title}</h2>
           <p class="lead">{service.short}</p>
           <p>{service.detail}</p>
-          <a class="text-link" href="/#contact">Request an estimate</a>
+          <a class="text-link" href={withBase("/#contact")}>Request an estimate</a>
         </div>
       </article>
     ))}

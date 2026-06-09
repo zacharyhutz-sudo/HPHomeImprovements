@@ -1,3 +1,30 @@
+const projectAsset = (file) => `/assets/projects/${file}`;
+
+const bathroomImages = Array.from({ length: 18 }, (_, index) => ({
+  src: projectAsset(`BR${index + 1}.webp`),
+  alt: `Bathroom remodel project ${index + 1} by HP Home Improvements`,
+}));
+
+const closetImages = Array.from({ length: 2 }, (_, index) => ({
+  src: projectAsset(`C${index + 1}.webp`),
+  alt: `Closet project ${index + 1} by HP Home Improvements`,
+}));
+
+const deckImages = Array.from({ length: 7 }, (_, index) => ({
+  src: projectAsset(`D${index + 1}.webp`),
+  alt: `Deck and exterior project ${index + 1} by HP Home Improvements`,
+}));
+
+const kitchenImages = Array.from({ length: 5 }, (_, index) => ({
+  src: projectAsset(`K${index + 1}.webp`),
+  alt: `Kitchen remodel project ${index + 1} by HP Home Improvements`,
+}));
+
+const livingRoomImages = Array.from({ length: 6 }, (_, index) => ({
+  src: projectAsset(`L${index + 1}.webp`),
+  alt: `Living room project ${index + 1} by HP Home Improvements`,
+}));
+
 export const contact = {
   phone: '404-931-3686',
   email: 'greg@hphomeimprovements.com',
@@ -20,70 +47,71 @@ export const brand = {
 
 export const homeImages = [
   {
-    src: 'https://static.wixstatic.com/media/d72225_67f6241e1c2f4231a5a04299585186be~mv2.jpg/v1/fill/w_908%2Ch_680%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d72225_67f6241e1c2f4231a5a04299585186be~mv2.jpg',
-    alt: 'Completed exterior home improvement project with porch',
+    src: deckImages[0].src,
+    alt: 'Completed exterior and deck project by HP Home Improvements',
   },
   {
-    src: 'https://static.wixstatic.com/media/d72225_49547d9e911a4ee2a4dfdf53473d07ed~mv2.jpg/v1/fit/w_922%2Ch_600%2Cq_90%2Cenc_avif%2Cquality_auto/d72225_49547d9e911a4ee2a4dfdf53473d07ed~mv2.jpg',
-    alt: 'White kitchen renovation with bright cabinetry',
+    src: kitchenImages[0].src,
+    alt: 'Completed kitchen renovation by HP Home Improvements',
   },
   {
-    src: 'https://static.wixstatic.com/media/d72225_7c208fa21b854067bf252b50a54e2437~mv2.jpg/v1/fit/w_954%2Ch_600%2Cq_90%2Cenc_avif%2Cquality_auto/d72225_7c208fa21b854067bf252b50a54e2437~mv2.jpg',
-    alt: 'Premium wood material stacked for a construction project',
+    src: bathroomImages[0].src,
+    alt: 'Completed bathroom remodel by HP Home Improvements',
   },
   {
-    src: 'https://static.wixstatic.com/media/d72225_0f492741f1854b75995ac503db10fa72~mv2.jpg/v1/fit/w_450%2Ch_600%2Cq_90%2Cenc_avif%2Cquality_auto/d72225_0f492741f1854b75995ac503db10fa72~mv2.jpg',
-    alt: 'Framing and carpentry in progress',
+    src: livingRoomImages[0].src,
+    alt: 'Finished living room project by HP Home Improvements',
   },
   {
-    src: 'https://static.wixstatic.com/media/d72225_2fb86884a0344b32aa412fd1b858aaaf~mv2.jpg/v1/fit/w_871%2Ch_600%2Cq_90%2Cenc_avif%2Cquality_auto/d72225_2fb86884a0344b32aa412fd1b858aaaf~mv2.jpg',
-    alt: 'Stone countertop detail for a renovation project',
+    src: closetImages[0].src,
+    alt: 'Custom closet project by HP Home Improvements',
   },
   {
-    src: 'https://static.wixstatic.com/media/d72225_e8e16d789aaa45029b478d8b90c64e38~mv2.jpg/v1/fit/w_734%2Ch_577%2Cq_90%2Cenc_avif%2Cquality_auto/d72225_e8e16d789aaa45029b478d8b90c64e38~mv2.jpg',
-    alt: 'Interior framing in progress',
+    src: kitchenImages[2].src,
+    alt: 'Kitchen detail from a completed renovation by HP Home Improvements',
   },
 ];
 
 export const projectsHero = {
-  src: 'https://static.wixstatic.com/media/d72225_1ca60bda719049df8b7b1d10c5784659~mv2.png/v1/fill/w_709%2Ch_560%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d72225_1ca60bda719049df8b7b1d10c5784659~mv2.png',
-  alt: 'Completed exterior remodel with new porch and trim',
+  src: deckImages[0].src,
+  alt: 'Completed deck and exterior project by HP Home Improvements',
 };
 
 export const projectGalleries = [
   {
-    title: 'Kitchens',
-    kicker: 'Cabinetry, countertops, finishes, and full-room updates.',
-    images: [
-      'https://static.wixstatic.com/media/d72225_9fbf4412bfcd498a8ee1c1f85d0cbf34~mv2.jpg/v1/fill/w_250%2Ch_187%2Cal_c%2Cq_90%2Cenc_auto/d72225_9fbf4412bfcd498a8ee1c1f85d0cbf34~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_608c96dfd88c47f7a3fc8e1fefa1e764~mv2.jpg/v1/fill/w_250%2Ch_187%2Cal_c%2Cq_90%2Cenc_auto/d72225_608c96dfd88c47f7a3fc8e1fefa1e764~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_b6037286035440f1af3e0ba94901c5d8~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_b6037286035440f1af3e0ba94901c5d8~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_254a7188b8d0442680f9c3cbf122f951~mv2.png/v1/fill/w_250%2Ch_249%2Cal_c%2Cq_95%2Cenc_auto/d72225_254a7188b8d0442680f9c3cbf122f951~mv2.png',
-      'https://static.wixstatic.com/media/d72225_49547d9e911a4ee2a4dfdf53473d07ed~mv2.jpg/v1/fill/w_250%2Ch_162%2Cal_c%2Cq_90%2Cenc_auto/d72225_49547d9e911a4ee2a4dfdf53473d07ed~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_b4056e47c8014c84ba834d89e9dd79e4~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_b4056e47c8014c84ba834d89e9dd79e4~mv2.jpg',
-    ],
-  },
-  {
     title: 'Bathrooms',
+    slug: 'bathrooms',
     kicker: 'Tile, fixtures, vanities, lighting, and clean finish work.',
-    images: [
-      'https://static.wixstatic.com/media/d72225_3f65932ec9d1444c844a0c844308f661~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_3f65932ec9d1444c844a0c844308f661~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_4ee8a46248ee45fc9512db4523b04771~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_4ee8a46248ee45fc9512db4523b04771~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_4d4029c0af434ba7add0739dc459ed7c~mv2.jpg/v1/fill/w_250%2Ch_187%2Cal_c%2Cq_90%2Cenc_auto/d72225_4d4029c0af434ba7add0739dc459ed7c~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_92be31383ee547bda83eb696305a1dd7~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_92be31383ee547bda83eb696305a1dd7~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_238a14a2f10d4107b243a0b1397be844~mv2.jpg/v1/fill/w_250%2Ch_187%2Cal_c%2Cq_90%2Cenc_auto/d72225_238a14a2f10d4107b243a0b1397be844~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_39bc3f6727e44a658e712d71cd9fd2fd~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_39bc3f6727e44a658e712d71cd9fd2fd~mv2.jpg',
-    ],
+    label: 'Bathrooms',
+    images: bathroomImages,
   },
   {
-    title: 'Exterior',
+    title: 'Closets',
+    slug: 'closets',
+    kicker: 'Storage upgrades, built-ins, and cleaner organization for everyday spaces.',
+    label: 'Closets',
+    images: closetImages,
+  },
+  {
+    title: 'Decks & Exteriors',
+    slug: 'decks-exteriors',
     kicker: 'Decks, trim, porches, repairs, and exterior improvements.',
-    images: [
-      'https://static.wixstatic.com/media/d72225_0c60b44500db4c5296934b58acd2a35d~mv2.jpg/v1/fill/w_250%2Ch_187%2Cal_c%2Cq_90%2Cenc_auto/d72225_0c60b44500db4c5296934b58acd2a35d~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_4a66f38b996f48688bfd7a773e196c0c~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_4a66f38b996f48688bfd7a773e196c0c~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_863e571fcfec47e58d6bf423df5835ba~mv2.jpg/v1/fill/w_250%2Ch_333%2Cal_c%2Cq_90%2Cenc_auto/d72225_863e571fcfec47e58d6bf423df5835ba~mv2.jpg',
-      'https://static.wixstatic.com/media/d72225_47bd0cf2423141ad8d6846215329b1ff~mv2.png/v1/fill/w_250%2Ch_226%2Cal_c%2Cq_95%2Cenc_auto/d72225_47bd0cf2423141ad8d6846215329b1ff~mv2.png',
-    ],
+    label: 'Exterior',
+    images: deckImages,
+  },
+  {
+    title: 'Kitchens',
+    slug: 'kitchens',
+    kicker: 'Cabinetry, countertops, finishes, and full-room updates.',
+    label: 'Kitchens',
+    images: kitchenImages,
+  },
+  {
+    title: 'Living Rooms',
+    slug: 'living-rooms',
+    kicker: 'Comfortable gathering spaces with refreshed finishes and thoughtful details.',
+    label: 'Living Rooms',
+    images: livingRoomImages,
   },
 ];
 
@@ -92,43 +120,43 @@ export const services = [
     title: 'Concrete',
     short: 'Foundations and walls to sidewalks and driveways.',
     detail: 'Durable concrete work planned around drainage, finish quality, and the way the space needs to perform long-term.',
-    src: 'https://static.wixstatic.com/media/76368a64b4604131a53571af7556015f.jpg/v1/fill/w_480%2Ch_320%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/76368a64b4604131a53571af7556015f.jpg',
+    src: deckImages[4]?.src ?? deckImages[0].src,
   },
   {
     title: 'Carpentry',
     short: 'Framing, decks, windows, doors, and custom woodwork.',
     detail: 'Structural and finish carpentry delivered with practical planning, clean craftsmanship, and careful installation.',
-    src: 'https://static.wixstatic.com/media/d72225_674ec071ae3e49eaad818d0e8b8d0664~mv2.jpg/v1/fill/w_480%2Ch_378%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d72225_674ec071ae3e49eaad818d0e8b8d0664~mv2.jpg',
+    src: deckImages[1]?.src ?? deckImages[0].src,
   },
   {
     title: 'Kitchens',
     short: 'Build a focal point for your home.',
     detail: 'From cabinets and counters to lighting and layout changes, HP helps coordinate the whole kitchen renovation.',
-    src: 'https://static.wixstatic.com/media/d72225_254a7188b8d0442680f9c3cbf122f951~mv2.png/v1/fill/w_441%2Ch_440%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d72225_254a7188b8d0442680f9c3cbf122f951~mv2.png',
+    src: kitchenImages[0].src,
   },
   {
     title: 'Floors',
     short: 'Tile, carpet, hardwood, and finish flooring.',
     detail: 'Flooring updates selected and installed to match your home, timeline, and day-to-day use.',
-    src: 'https://static.wixstatic.com/media/a25703950281458cb936a2868215854f.jpg/v1/fill/w_480%2Ch_320%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/a25703950281458cb936a2868215854f.jpg',
+    src: livingRoomImages[1]?.src ?? livingRoomImages[0].src,
   },
   {
     title: 'Plumbing and Electrical',
     short: 'Utility experts ready to help.',
     detail: 'Project coordination for the behind-the-wall work that helps renovations finish correctly and safely.',
-    src: 'https://static.wixstatic.com/media/nsplsh_566f426337724845625149~mv2.jpg/v1/fill/w_480%2Ch_319%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/nsplsh_566f426337724845625149~mv2.jpg',
+    src: bathroomImages[1]?.src ?? bathroomImages[0].src,
   },
   {
     title: 'Landscaping',
     short: 'Solutions to make your property stand out.',
     detail: 'Exterior improvements that make the outside of the home feel as intentional as the inside.',
-    src: 'https://static.wixstatic.com/media/7f06cc4c87bf41c78e736693664a1829.jpg/v1/fill/w_480%2Ch_317%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/7f06cc4c87bf41c78e736693664a1829.jpg',
+    src: deckImages[5]?.src ?? deckImages[0].src,
   },
   {
     title: 'Painting',
     short: 'Whole-house refreshes or single-room updates.',
     detail: 'Interior and exterior painting support with careful prep, clean lines, and guidance through the finish process.',
-    src: 'https://static.wixstatic.com/media/91bbf6172899422ab9800d84e755af4e.jpg/v1/fill/w_480%2Ch_320%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/91bbf6172899422ab9800d84e755af4e.jpg',
+    src: livingRoomImages[2]?.src ?? livingRoomImages[0].src,
   },
 ];
 

@@ -9,7 +9,7 @@ const cleanPhone = contact.phone.replaceAll('-', '');
   description="Explore HP Home Improvements services including concrete, carpentry, kitchens, flooring, plumbing, electrical coordination, landscaping, and painting."
 >
   <section class="page-hero">
-    <img src={homeImages[2].src} alt={homeImages[2].alt} class="hero-bg" loading="eager" />
+    <img src={withBase(homeImages[2].src)} alt={homeImages[2].alt} class="hero-bg" loading="eager" />
     <div class="hero-overlay"></div>
     <div class="page-hero-content">
       <p class="eyebrow">Services</p>
@@ -22,7 +22,7 @@ const cleanPhone = contact.phone.replaceAll('-', '');
     {services.map((service, index) => (
       <article class:list={["service-feature", { reverse: index % 2 === 1 }]}> 
         <div class="service-image">
-          <img src={service.src} alt={`${service.title} service`} loading="lazy" />
+          <img src={withBase(service.src)} alt={`${service.title} service`} loading="lazy" />
         </div>
         <div class="service-detail">
           <p class="eyebrow blue">{String(index + 1).padStart(2, '0')}</p>

@@ -1,15 +1,17 @@
 ---
-import { withBase } from '../utils/paths.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { brand, contact, homeImages, projectGalleries, processSteps, services } from '../data/siteData.js';
+const base = import.meta.env.BASE_URL;
+const route = (href) => href.startsWith('#') ? `${base}${href}` : `${base}${href.replace(/^\/+/, '')}`;
+const asset = (src) => src.startsWith('http') ? src : `${base}${src.replace(/^\/+/, '')}`;
 const cleanPhone = contact.phone.replaceAll('-', '');
 const featuredProjects = [
-  projectGalleries.find((gallery) => gallery.slug === 'kitchens')?.images[0],
-  projectGalleries.find((gallery) => gallery.slug === 'bathrooms')?.images[0],
-  projectGalleries.find((gallery) => gallery.slug === 'decks-exteriors')?.images[0],
-  projectGalleries.find((gallery) => gallery.slug === 'living-rooms')?.images[0],
-  projectGalleries.find((gallery) => gallery.slug === 'closets')?.images[0],
-  projectGalleries.find((gallery) => gallery.slug === 'bathrooms')?.images[5],
+  projectGalleries.find((gallery) => gallery.title === 'Kitchens')?.images[0],
+  projectGalleries.find((gallery) => gallery.title === 'Bathrooms')?.images[0],
+  projectGalleries.find((gallery) => gallery.title === 'Decks & Exteriors')?.images[0],
+  projectGalleries.find((gallery) => gallery.title === 'Living Rooms')?.images[0],
+  projectGalleries.find((gallery) => gallery.title === 'Bathrooms')?.images[4],
+  projectGalleries.find((gallery) => gallery.title === 'Kitchens')?.images[2],
 ].filter(Boolean);
 const featuredServices = services.slice(0, 6);
 ---
@@ -18,20 +20,16 @@ const featuredServices = services.slice(0, 6);
   description="HP Home Improvements is a licensed, bonded, and insured Georgia contractor for remodels, kitchens, bathrooms, carpentry, exterior work, and more."
 >
   <section class="hero home-hero">
-    <img src={withBase(homeImages[0].src)} alt={homeImages[0].alt} class="hero-bg" loading="eager" />
+    <img src={asset(homeImages[0].src)} alt={homeImages[0].alt} class="hero-bg" loading="eager" />
     <div class="hero-overlay"></div>
     <div class="hero-content reveal-up">
       <p class="eyebrow">Licensed • Bonded • Insured</p>
-      <h1>A contractor for the whole project.</h1>
-      <p class="hero-copy">Home improvements, remodels, carpentry, and project coordination across Georgia.</p>
+      <h1>Thoughtful home improvements, built with care.</h1>
+      <p class="hero-copy">Bathrooms, kitchens, decks, closets, living spaces, and full-project coordination across Georgia.</p>
       <div class="hero-buttons">
-        <a class="button button-primary" href="#contact">Book an Estimate</a>
-        <a class="button button-secondary" href={withBase("/projects/")}>View Projects</a>
+        <a class="button button-primary" href={route('/#contact')}>Request an Estimate</a>
+        <a class="button button-secondary" href={route('/projects/')}>View Projects</a>
       </div>
-    </div>
-    <div class="hero-card">
-      <img src={withBase(brand.logo)} alt="HP Home Improvements logo" />
-      <span>Georgia-based construction services with one clear point of contact from start to finish.</span>
     </div>
   </section>
 
@@ -42,14 +40,22 @@ const featuredServices = services.slice(0, 6);
     <div><strong>Whole Project</strong><span>Plan, build, finish</span></div>
   </section>
 
-  <section class="split-section">
+  <section class="editorial-intro">
+    <div>
+      <p class="eyebrow">Our Philosophy</p>
+      <h2>Home improvement should feel organized, honest, and well-managed from the first conversation to the final walkthrough.</h2>
+    </div>
+    <p>HP Home Improvements helps homeowners move from idea to finished project with a clear scope, reliable communication, and careful craftsmanship. We coordinate the details so each phase supports the next.</p>
+  </section>
+
+  <section class="split-section philosophy-section">
     <div class="split-image framed-image">
-      <img src={withBase(homeImages[1].src)} alt={homeImages[1].alt} loading="lazy" />
+      <img src={asset(homeImages[1].src)} alt={homeImages[1].alt} loading="lazy" />
     </div>
     <div class="split-copy">
-      <p class="eyebrow blue">About HP</p>
+      <p class="eyebrow">Built Around Trust</p>
       <h2>One team guiding the work from first estimate to final walkthrough.</h2>
-      <p>HP Home Improvements is a leader in providing value-added construction services to customers by creating a successful partnership throughout the construction process. We are a licensed, bonded, and insured company working in the state of Georgia.</p>
+      <p>As a licensed, bonded, and insured company working in Georgia, HP brings practical planning and finish-minded craftsmanship to home improvements, remodels, repairs, and project coordination.</p>
       <div class="mini-grid">
         <div>
           <h3>Clear Scope</h3>
@@ -60,25 +66,40 @@ const featuredServices = services.slice(0, 6);
           <p>From framing to finishes, the details are handled with pride and practical experience.</p>
         </div>
       </div>
-      <a class="text-link" href={withBase("/services/")}>See what we do</a>
+      <a class="text-link" href={route('/services/')}>See what we do</a>
     </div>
   </section>
 
-  <section class="dark-section services-preview">
-    <div class="section-heading centered light">
-      <p class="eyebrow">Services</p>
-      <h2>Home improvement work with the whole project in view.</h2>
-      <p>Renovations often involve more than one trade. HP helps connect the dots so every phase works together.</p>
+  <section class="portfolio-preview featured-work-section">
+    <div class="section-heading with-link">
+      <div>
+        <p class="eyebrow">Featured Projects</p>
+        <h2>Recent work, finished with care.</h2>
+        <p>A closer look at kitchens, bathrooms, exterior work, closets, and living spaces.</p>
+      </div>
+      <a class="text-link" href={route('/projects/')}>View all projects</a>
     </div>
-    <div class="card-grid service-grid-preview">
-      {featuredServices.map((service) => (
-        <a class="service-tile" href={withBase("/services/")}> 
-          <img src={withBase(service.src)} alt={`${service.title} service`} loading="lazy" />
-          <div>
-            <span>Service</span>
-            <h3>{service.title}</h3>
-            <p>{service.short}</p>
-          </div>
+    <div class="editorial-mosaic">
+      {featuredProjects.map((src, index) => (
+        <a class:list={["mosaic-item", { feature: index === 0, tall: index === 2 || index === 4 }]} href={route('/projects/')}>
+          <img src={asset(src)} alt="HP Home Improvements project" loading="lazy" />
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="services-editorial">
+    <div class="section-heading centered">
+      <p class="eyebrow">Services</p>
+      <h2>Renovations with the whole project in view.</h2>
+      <p>From finish details to multi-trade coordination, HP helps connect the dots so every phase works together.</p>
+    </div>
+    <div class="service-list-editorial">
+      {featuredServices.map((service, index) => (
+        <a class="service-row" href={route('/services/')}>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <h3>{service.title}</h3>
+          <p>{service.short}</p>
         </a>
       ))}
     </div>
@@ -86,7 +107,7 @@ const featuredServices = services.slice(0, 6);
 
   <section class="process-section">
     <div class="section-heading">
-      <p class="eyebrow blue">Process</p>
+      <p class="eyebrow">Process</p>
       <h2>Built around a cleaner experience.</h2>
     </div>
     <div class="process-grid">
@@ -100,23 +121,6 @@ const featuredServices = services.slice(0, 6);
     </div>
   </section>
 
-  <section class="portfolio-preview">
-    <div class="section-heading with-link">
-      <div>
-        <p class="eyebrow blue">Recent Work</p>
-        <h2>Selected project details.</h2>
-      </div>
-      <a class="text-link" href={withBase("/projects/")}>View all projects</a>
-    </div>
-    <div class="modern-gallery home-project-mosaic">
-      {featuredProjects.map((image, index) => (
-        <a class:list={["gallery-item", { large: index === 0 || index === 3 }]} href={withBase("/projects/")}>
-          <img src={withBase(image.src)} alt={image.alt} loading="lazy" />
-        </a>
-      ))}
-    </div>
-  </section>
-
   <section class="quote-band">
     <p class="eyebrow">Client Feedback</p>
     <blockquote>“Greg stated many times that their quality is their reputation and he absolutely stands behind that.”</blockquote>
@@ -125,7 +129,7 @@ const featuredServices = services.slice(0, 6);
 
   <section class="contact-section" id="contact">
     <div class="contact-copy">
-      <p class="eyebrow blue">Start a Project</p>
+      <p class="eyebrow">Start a Project</p>
       <h2>Text or call to book an estimate today.</h2>
       <p>Tell us what you want to improve, and we’ll help you think through the next right step.</p>
       <address>

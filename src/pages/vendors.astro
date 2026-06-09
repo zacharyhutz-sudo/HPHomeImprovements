@@ -1,14 +1,16 @@
 ---
-import { withBase } from '../utils/paths.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { homeImages, vendors } from '../data/siteData.js';
+const base = import.meta.env.BASE_URL;
+const route = (href) => href.startsWith('#') ? `${base}${href}` : `${base}${href.replace(/^\/+/, '')}`;
+const asset = (src) => src.startsWith('http') ? src : `${base}${src.replace(/^\/+/, '')}`;
 ---
 <BaseLayout
   title="Vendors | HP Home Improvements"
   description="HP Home Improvements works with trusted vendor relationships for materials, finishes, paint, flooring, and project supplies."
 >
   <section class="page-hero vendors-page-hero">
-    <img src={homeImages[4].src} alt={homeImages[4].alt} class="hero-bg" loading="eager" />
+    <img src={asset(homeImages[4].src)} alt={homeImages[4].alt} class="hero-bg" loading="eager" />
     <div class="hero-overlay"></div>
     <div class="page-hero-content">
       <p class="eyebrow">Vendors</p>
@@ -24,7 +26,7 @@ import { homeImages, vendors } from '../data/siteData.js';
           {vendor.mark.split('\n').map((line) => <span>{line}</span>)}
         </a>
         <div>
-          <p class="eyebrow blue">Vendor</p>
+          <p class="eyebrow">Vendor</p>
           <h2>{vendor.name}</h2>
           <p>{vendor.specialty}</p>
         </div>
@@ -35,7 +37,7 @@ import { homeImages, vendors } from '../data/siteData.js';
 
   <section class="materials-section">
     <div class="section-heading centered">
-      <p class="eyebrow blue">Materials</p>
+      <p class="eyebrow">Materials</p>
       <h2>What we commonly source.</h2>
       <p>Every project is different, but clear material decisions help the whole job move forward.</p>
     </div>
@@ -56,6 +58,6 @@ import { homeImages, vendors } from '../data/siteData.js';
       <p class="eyebrow">Vendor Coordination</p>
       <h2>Materials should support the project, not slow it down.</h2>
     </div>
-    <a class="button button-light" href={withBase("/#contact")}>Start a Project</a>
+    <a class="button button-light" href={route('/#contact')}>Start a Project</a>
   </section>
 </BaseLayout>

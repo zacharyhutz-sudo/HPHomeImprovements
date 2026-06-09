@@ -1,30 +1,3 @@
-const projectAsset = (file) => `/assets/projects/${file}`;
-
-const bathroomImages = Array.from({ length: 18 }, (_, index) => ({
-  src: projectAsset(`BR${index + 1}.webp`),
-  alt: `Bathroom remodel project ${index + 1} by HP Home Improvements`,
-}));
-
-const closetImages = Array.from({ length: 2 }, (_, index) => ({
-  src: projectAsset(`C${index + 1}.webp`),
-  alt: `Closet project ${index + 1} by HP Home Improvements`,
-}));
-
-const deckImages = Array.from({ length: 7 }, (_, index) => ({
-  src: projectAsset(`D${index + 1}.webp`),
-  alt: `Deck and exterior project ${index + 1} by HP Home Improvements`,
-}));
-
-const kitchenImages = Array.from({ length: 5 }, (_, index) => ({
-  src: projectAsset(`K${index + 1}.webp`),
-  alt: `Kitchen remodel project ${index + 1} by HP Home Improvements`,
-}));
-
-const livingRoomImages = Array.from({ length: 6 }, (_, index) => ({
-  src: projectAsset(`L${index + 1}.webp`),
-  alt: `Living room project ${index + 1} by HP Home Improvements`,
-}));
-
 export const contact = {
   phone: '404-931-3686',
   email: 'greg@hphomeimprovements.com',
@@ -41,122 +14,113 @@ export const links = {
 };
 
 export const brand = {
-  logo: '/assets/hp-logo.png',
+  logo: 'assets/hp-logo.png',
   tagline: 'A contractor for the whole project.',
 };
 
+const project = (file) => `assets/projects/${file}`;
+
 export const homeImages = [
   {
-    src: deckImages[0].src,
-    alt: 'Completed exterior and deck project by HP Home Improvements',
+    src: project('K1.webp'),
+    alt: 'Finished kitchen project by HP Home Improvements',
   },
   {
-    src: kitchenImages[0].src,
-    alt: 'Completed kitchen renovation by HP Home Improvements',
+    src: project('L1.webp'),
+    alt: 'Completed living room improvement by HP Home Improvements',
   },
   {
-    src: bathroomImages[0].src,
-    alt: 'Completed bathroom remodel by HP Home Improvements',
+    src: project('D1.webp'),
+    alt: 'Deck and exterior project by HP Home Improvements',
   },
   {
-    src: livingRoomImages[0].src,
-    alt: 'Finished living room project by HP Home Improvements',
+    src: project('BR1.webp'),
+    alt: 'Bathroom remodel project by HP Home Improvements',
   },
   {
-    src: closetImages[0].src,
-    alt: 'Custom closet project by HP Home Improvements',
+    src: project('C1.webp'),
+    alt: 'Closet project by HP Home Improvements',
   },
   {
-    src: kitchenImages[2].src,
-    alt: 'Kitchen detail from a completed renovation by HP Home Improvements',
+    src: project('K2.webp'),
+    alt: 'Kitchen detail from an HP Home Improvements project',
   },
 ];
 
 export const projectsHero = {
-  src: deckImages[0].src,
-  alt: 'Completed deck and exterior project by HP Home Improvements',
+  src: project('K1.webp'),
+  alt: 'Finished home improvement project by HP Home Improvements',
 };
 
 export const projectGalleries = [
   {
     title: 'Bathrooms',
-    slug: 'bathrooms',
+    label: 'BR',
     kicker: 'Tile, fixtures, vanities, lighting, and clean finish work.',
-    label: 'Bathrooms',
-    images: bathroomImages,
-  },
-  {
-    title: 'Closets',
-    slug: 'closets',
-    kicker: 'Storage upgrades, built-ins, and cleaner organization for everyday spaces.',
-    label: 'Closets',
-    images: closetImages,
-  },
-  {
-    title: 'Decks & Exteriors',
-    slug: 'decks-exteriors',
-    kicker: 'Decks, trim, porches, repairs, and exterior improvements.',
-    label: 'Exterior',
-    images: deckImages,
+    images: Array.from({ length: 18 }, (_, index) => project(`BR${index + 1}.webp`)),
   },
   {
     title: 'Kitchens',
-    slug: 'kitchens',
+    label: 'K',
     kicker: 'Cabinetry, countertops, finishes, and full-room updates.',
-    label: 'Kitchens',
-    images: kitchenImages,
+    images: Array.from({ length: 5 }, (_, index) => project(`K${index + 1}.webp`)),
+  },
+  {
+    title: 'Decks & Exteriors',
+    label: 'D',
+    kicker: 'Decks, trim, porches, repairs, and exterior improvements.',
+    images: Array.from({ length: 7 }, (_, index) => project(`D${index + 1}.webp`)),
   },
   {
     title: 'Living Rooms',
-    slug: 'living-rooms',
-    kicker: 'Comfortable gathering spaces with refreshed finishes and thoughtful details.',
-    label: 'Living Rooms',
-    images: livingRoomImages,
+    label: 'L',
+    kicker: 'Interior spaces finished with thoughtful details and practical craftsmanship.',
+    images: Array.from({ length: 6 }, (_, index) => project(`L${index + 1}.webp`)),
+  },
+  {
+    title: 'Closets',
+    label: 'C',
+    kicker: 'Storage, finish carpentry, and closet spaces planned around everyday use.',
+    images: Array.from({ length: 2 }, (_, index) => project(`C${index + 1}.webp`)),
   },
 ];
 
 export const services = [
   {
-    title: 'Concrete',
-    short: 'Foundations and walls to sidewalks and driveways.',
-    detail: 'Durable concrete work planned around drainage, finish quality, and the way the space needs to perform long-term.',
-    src: deckImages[4]?.src ?? deckImages[0].src,
-  },
-  {
-    title: 'Carpentry',
-    short: 'Framing, decks, windows, doors, and custom woodwork.',
-    detail: 'Structural and finish carpentry delivered with practical planning, clean craftsmanship, and careful installation.',
-    src: deckImages[1]?.src ?? deckImages[0].src,
-  },
-  {
     title: 'Kitchens',
     short: 'Build a focal point for your home.',
     detail: 'From cabinets and counters to lighting and layout changes, HP helps coordinate the whole kitchen renovation.',
-    src: kitchenImages[0].src,
+    src: project('K1.webp'),
   },
   {
-    title: 'Floors',
-    short: 'Tile, carpet, hardwood, and finish flooring.',
-    detail: 'Flooring updates selected and installed to match your home, timeline, and day-to-day use.',
-    src: livingRoomImages[1]?.src ?? livingRoomImages[0].src,
+    title: 'Bathrooms',
+    short: 'Clean remodels with careful finish work.',
+    detail: 'Tile, vanities, fixtures, lighting, repairs, and full bathroom updates planned around the way the room needs to work.',
+    src: project('BR1.webp'),
   },
   {
-    title: 'Plumbing and Electrical',
-    short: 'Utility experts ready to help.',
-    detail: 'Project coordination for the behind-the-wall work that helps renovations finish correctly and safely.',
-    src: bathroomImages[1]?.src ?? bathroomImages[0].src,
+    title: 'Decks & Exteriors',
+    short: 'Outdoor improvements built to last.',
+    detail: 'Decks, porches, trim, exterior repairs, and improvements that make the outside of the home feel intentional.',
+    src: project('D1.webp'),
   },
   {
-    title: 'Landscaping',
-    short: 'Solutions to make your property stand out.',
-    detail: 'Exterior improvements that make the outside of the home feel as intentional as the inside.',
-    src: deckImages[5]?.src ?? deckImages[0].src,
+    title: 'Carpentry',
+    short: 'Framing, doors, trim, and custom woodwork.',
+    detail: 'Structural and finish carpentry delivered with practical planning, clean craftsmanship, and careful installation.',
+    src: project('D2.webp'),
   },
   {
-    title: 'Painting',
-    short: 'Whole-house refreshes or single-room updates.',
-    detail: 'Interior and exterior painting support with careful prep, clean lines, and guidance through the finish process.',
-    src: livingRoomImages[2]?.src ?? livingRoomImages[0].src,
+    title: 'Closets',
+    short: 'Storage spaces with a more finished feel.',
+    detail: 'Closet improvements, shelving, organization, and finish details that make daily use easier.',
+    src: project('C1.webp'),
+  },
+  {
+    title: 'Living Spaces',
+    short: 'Interior updates that make the whole home feel better.',
+    detail: 'Flooring, paint, trim, repair, and room updates coordinated with the finished result in mind.',
+    src: project('L1.webp'),
   },
 ];
 

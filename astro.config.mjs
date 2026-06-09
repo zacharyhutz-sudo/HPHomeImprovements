@@ -2,19 +2,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-const repository = process.env.GITHUB_REPOSITORY ?? '';
-const [owner = '', repo = ''] = repository.split('/');
-const isProjectPagesSite = Boolean(
-  process.env.GITHUB_ACTIONS && repo && !repo.endsWith('.github.io')
-);
-
-const site = process.env.ASTRO_SITE || (owner ? `https://${owner}.github.io` : undefined);
-const base = process.env.ASTRO_BASE || (isProjectPagesSite ? `/${repo}` : '/');
-
+// https://astro.build/config
 export default defineConfig({
-  site,
-  base,
+  site: 'https://zacharyhutz-sudo.github.io',
+  base: '/HPHomeImprovements/',
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });

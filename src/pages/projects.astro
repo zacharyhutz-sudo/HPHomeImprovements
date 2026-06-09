@@ -1,74 +1,27 @@
 ---
-import { withBase } from '../utils/paths.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { links, projectGalleries, projectsHero } from '../data/siteData.js';
+const base = import.meta.env.BASE_URL;
+const route = (href) => href.startsWith('#') ? `${base}${href}` : `${base}${href.replace(/^\/+/, '')}`;
+const asset = (src) => src.startsWith('http') ? src : `${base}${src.replace(/^\/+/, '')}`;
 ---
 <BaseLayout
   title="Projects | HP Home Improvements"
-  description="View HP Home Improvements project work across bathrooms, closets, decks, kitchens, living rooms, and more."
+  description="View HP Home Improvements project work across kitchens, bathrooms, exterior improvements, closets, living rooms, and more."
 >
   <section class="page-hero projects-page-hero">
-    <img src={withBase(projectsHero.src)} alt={projectsHero.alt} class="hero-bg" loading="eager" />
+    <img src={asset(projectsHero.src)} alt={projectsHero.alt} class="hero-bg" loading="eager" />
     <div class="hero-overlay"></div>
     <div class="page-hero-content">
       <p class="eyebrow">Projects</p>
       <h1>Finished work, real homes, and practical craftsmanship.</h1>
-      <p>Browse recent bathrooms, closets, decks, kitchens, and living room work from HP Home Improvements.</p>
+      <p>Browse recent bathroom, kitchen, deck, closet, and living space work from HP Home Improvements.</p>
     </div>
   </section>
-
-  <section class="projects-intro-panel">
-    <div>
-      <p class="eyebrow blue">Project Gallery</p>
-      <h2>Modern upgrades across the rooms people use every day.</h2>
-    </div>
-    <p>Each section below uses the new WebP project uploads from <code>public/assets/projects</code>, organized by filename prefix: BR, C, D, K, and L.</p>
-  </section>
-
-  <section class="project-category-nav" aria-label="Project categories">
-    {projectGalleries.map((gallery) => (
-      <a href={`#${gallery.slug}`}>
-        <span>{gallery.title}</span>
-        <strong>{gallery.images.length}</strong>
-      </a>
-    ))}
-  </section>
-
-  {projectGalleries.map((gallery) => (
-    <section class="project-gallery-section project-mosaic-section" id={gallery.slug}>
-      <div class="section-heading with-link">
-        <div>
-          <p class="eyebrow blue">{gallery.label}</p>
-          <h2>{gallery.title}</h2>
-          <p>{gallery.kicker}</p>
-        </div>
-        <a class="text-link" href={withBase("/#contact")}>Plan a similar project</a>
-      </div>
-      <div class="project-mosaic-grid">
-        {gallery.images.map((image, index) => (
-          <a
-            class:list={[
-              'project-image-card',
-              {
-                feature: index === 0,
-                wide: index === 3 || index === 8 || index === 13,
-                tall: index === 2 || index === 6 || index === 11 || gallery.images.length === 2,
-              },
-            ]}
-            href={withBase(image.src)}
-            aria-label={`Open ${image.alt}`}
-          >
-            <img src={withBase(image.src)} alt={image.alt} loading="lazy" />
-            <span>{String(index + 1).padStart(2, '0')}</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  ))}
 
   <section class="testimonial-feature">
     <div class="testimonial-card-modern">
-      <p class="eyebrow blue">What Clients Say</p>
+      <p class="eyebrow">What Clients Say</p>
       <h2>“Their quality is their reputation.”</h2>
       <p>We've used HP Home Improvements three times in the past six months, most recently to do a complete renovation of our master bathroom. Each project has been completed timely and Greg and his crew were easy and professional to work with.</p>
       <p>They really outdid themselves with our master bath and we couldn't be happier with how it turned out!</p>
@@ -81,11 +34,31 @@ import { links, projectGalleries, projectsHero } from '../data/siteData.js';
     </div>
   </section>
 
+  {projectGalleries.map((gallery) => (
+    <section class="project-gallery-section">
+      <div class="section-heading with-link">
+        <div>
+          <p class="eyebrow">Portfolio / {gallery.label}</p>
+          <h2>{gallery.title}</h2>
+          <p>{gallery.kicker}</p>
+        </div>
+        <a class="text-link" href={route('/#contact')}>Plan a similar project</a>
+      </div>
+      <div class="project-mosaic">
+        {gallery.images.map((src, index) => (
+          <a class:list={["project-tile", { feature: index === 0, tall: index === 3 || index === 7 || index === 12, wide: index === 5 || index === 10 }]} href={asset(src)}>
+            <img src={asset(src)} alt={`${gallery.title} project by HP Home Improvements`} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
   <section class="review-form-section">
     <div>
-      <p class="eyebrow blue">Add a Testimonial</p>
+      <p class="eyebrow">Add a Testimonial</p>
       <h2>How did we do?</h2>
-      <p>This is a placeholder form for now. It can be wired to a form service later.</p>
+      <p>This is a placeholder form for now. It can be wired to form handling later.</p>
     </div>
     <form class="contact-form compact" action="#testimonial-submit">
       <label>Your Review<textarea name="review" placeholder="Share your experience..."></textarea></label>
